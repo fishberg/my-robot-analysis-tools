@@ -54,7 +54,7 @@ Usage:
 ```
 
 Result:
-```bash
+```
 n0-range.csv -> n0-range_uwb.csv
 ```
 
@@ -105,7 +105,7 @@ Usage:
 ```
 
 Result:
-```bash
+```
 # creates merge.csv with the following columns
 t merge_t
 p1_t p1_x p1_y p1_z p1_roll p1_pitch p1_yaw
@@ -139,10 +139,10 @@ Usage:
 ```
 
 Result:
-```bash
+```
 merge.csv -> p1_p2_merge.csv
 ```
-```bash
+```
 # output has all columns in merge.csv, plus these:
 rel_x rel_y rel_z rel_roll rel_pitch rel_yaw
 ```
@@ -155,8 +155,13 @@ Usage:
 ```
 
 Result:
-```bash
+```
 p1_p2_merge.csv -> p1_p2.csv
+```
+```
+t x y z roll pitch yaw A_x A_y A_z A_roll A_pitch A_yaw B_x B_y B_z B_roll B_pitch B_yaw
+# for each pair of antenna x=1..X and y=1..Y
+x_y
 ```
 
 ## 07_window.py
@@ -167,8 +172,12 @@ Usage:
 ```
 
 Result:
-```bash
+```
 p1_p2.csv -> p1_p2_1_1.csv
+```
+```
+# output has all columns in p1_p2.csv, plus for each pair of antenna x=1..X and y=1..Y:
+x_y_std
 ```
 
 TODO: Remove need for `config.py`
@@ -182,7 +191,13 @@ Usage:
 ./08_gt-err-calc.py p1_p2_1_1.csv input_p1_p2_1_1.csv config.py
 ```
 
+You can also do `p1_p2.csv -> input_p1_p2.csv` if you want to skip windowing.
+
 Result:
-```bash
+```
 p1_p2_1_1.csv -> input_p1_p2_1_1.csv
+```
+```
+# output has all columns in p1_p2_1_1.csv, plus for each pair of antenna x=1..X and y=1..Y:
+x_y_t x_y_err
 ```
