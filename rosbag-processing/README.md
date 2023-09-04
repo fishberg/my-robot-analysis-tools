@@ -135,14 +135,54 @@ n17_t n17_n0 n17_n1 n17_n2 n17_n3 n17_n4 n17_n5 n17_n6 n17_n7 n17_n8 n17_n9 n17_
 
 Usage:
 ```bash
-./05_calc-rel-pose.py merge.csv p1_p2_merge.csv p1_ p2_ rel_
+./05_calc-rel-pose.py merge.csv p1_p2_merge.csv p1 p2 rel
 ```
 
 Result:
-```
+```bash
 merge.csv -> p1_p2_merge.csv
 ```
-```
+```bash
 # output has all columns in merge.csv, plus these:
 rel_x rel_y rel_z rel_roll rel_pitch rel_yaw
+```
+
+## 06_rename-rel-data.py
+
+Usage:
+```bash
+./06_rename-rel-data.py p1_p2_merge.csv p1_p2.csv p1 p2 rel -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -b 6 -b 7 -b 8 -b 9 -b 10 -b 11
+```
+
+Result:
+```bash
+p1_p2_merge.csv -> p1_p2.csv
+```
+
+## 07_window.py
+
+Usage:
+```bash
+./07_window.py p1_p2.csv p1_p2_1_1.csv config.py 1 1
+```
+
+Result:
+```bash
+p1_p2.csv -> p1_p2_1_1.csv
+```
+
+TODO: Remove need for `config.py`
+
+
+
+## 08_gt-err-calc.py
+
+Usage:
+```bash
+./08_gt-err-calc.py p1_p2_1_1.csv input_p1_p2_1_1.csv config.py
+```
+
+Result:
+```bash
+p1_p2_1_1.csv -> input_p1_p2_1_1.csv
 ```

@@ -9,7 +9,7 @@ import re
 
 import sys
 curr_dir = os.path.dirname(os.path.abspath(__file__))
-libs_path = os.path.join(curr_dir, 'libs')
+libs_path = f'{curr_dir}/../python-imports'
 sys.path.insert(1, libs_path)
 
 from mypose import Pose
@@ -27,9 +27,9 @@ out_filename = args.outfile
 
 df = pd.read_csv(args.infile)
 
-base_pose = [f'{args.base_prefix}{i}' for i in ['x','y','z','roll','pitch','yaw']]
-target_pose = [f'{args.target_prefix}{i}' for i in ['x','y','z','roll','pitch','yaw']]
-rel_pose = [f'{args.rel_prefix}{i}' for i in ['x','y','z','roll','pitch','yaw']]
+base_pose = [f'{args.base_prefix}_{i}' for i in ['x','y','z','roll','pitch','yaw']]
+target_pose = [f'{args.target_prefix}_{i}' for i in ['x','y','z','roll','pitch','yaw']]
+rel_pose = [f'{args.rel_prefix}_{i}' for i in ['x','y','z','roll','pitch','yaw']]
 rel_x, rel_y, rel_z, rel_roll, rel_pitch, rel_yaw = rel_pose
 
 rels = []

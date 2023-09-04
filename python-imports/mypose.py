@@ -17,7 +17,7 @@ class Pose:
         return Pose.from_xyzrpy(x,y,z,0,0,yaw)
     
     @staticmethod
-    def from_xyy(self,x,y,yaw):
+    def from_xyy(x,y,yaw):
         return Pose.from_xyzrpy(x,y,0,0,0,yaw)
     
     @staticmethod
@@ -71,7 +71,18 @@ def un_homogeneous_pts(hpts):
     pts = hpts[0:3,:]
     return pts
 
+def transform_pts(T,pts):
+    hpts = to_homogeneous_pts(pts)
+    res = un_homogeneous_pts(T @ hpts)
+    return res
+
 ########################################
+
+# treats each row as a vector
+# both must have same number of cols
+# A.shape = (n,m)
+# B.shape = (l,m)
+# output = (n,l)
 
 # https://nenadmarkus.com/p/all-pairs-euclidean/
 def all_pairs_euclid_numpy(A, B):

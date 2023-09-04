@@ -89,6 +89,13 @@ def rad_speed(rads,same_len=True):
     vel_unsigned = np.abs(vel_signed)
     return vel_unsigned
 
+# --------------------------------------
+
+def rad_mean(rads):
+    x = np.cos(rads).sum()
+    y = np.sin(rads).sum()
+    return np.arctan2(y,x)
+
 # ======================================
 # degrees
 # ======================================
@@ -177,6 +184,13 @@ def deg_speed(rads,same_len=True):
     deg_res = rad2deg(rad_res)
     return deg_res
 
+# --------------------------------------
+
+def deg_mean(degs):
+    rads = np.deg2rad(degs)
+    rad_res = rad_mean(rads)
+    return np.rad2deg(rad_res)
+
 # ======================================
 # pos
 # ======================================
@@ -241,14 +255,6 @@ def QSR(arr,sf):
 # todo
 # ======================================
 
-# def mean_angle(lst):
-#     x = 0
-#     y = 0
-#     for rad in np.deg2rad(lst):
-#         x += np.cos(rad)
-#         y += np.sin(rad)    
-#     return np.rad2deg(np.arctan2(y,x))
-# 
 # def calc_spherical(x,y,z):
 #     x = np.array(x)
 #     y = np.array(y)
