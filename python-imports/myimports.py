@@ -20,10 +20,7 @@ from numpy import pi as PI
 from numpy.linalg import norm as NORM
 from numpy.linalg import inv as INV
 from scipy.spatial.transform import Rotation as ROT
-from importlib import reload as RELOAD
-from glob import glob as GLOB
+from importlib import reload
+from glob import glob as glob
 
-if 'get_ipython' in globals():
-    from tqdm.notebook import tqdm
-else:
-    from tqdm import tqdm
+from tqdm.auto import tqdm, trange

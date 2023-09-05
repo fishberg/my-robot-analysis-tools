@@ -92,5 +92,10 @@ df[COLS_RS] = pd.DataFrame([r,r_t,r_err]).T
 
 
 
+# spherical calc
+df[COLS_SPHERICAL] = np.array(H.cartesian_to_spherical(df['x'],df['y'],df['z'])).T
+
+
+
 # write file
 df.to_csv(OUTFILE,index=False)

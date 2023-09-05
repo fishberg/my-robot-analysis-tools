@@ -231,6 +231,9 @@ def pos_err_abs(df,cols_true,cols_pred):
 # pose
 # ======================================
 
+# TODO: TBD
+
+
 
 # ======================================
 # misc
@@ -240,7 +243,7 @@ def QR(arr,dp=2):
     '''
     Quick Round, where `dp` is `decimal places`
     '''
-    return np.round(arr,c)
+    return np.round(arr,dp)
 
 # --------------------------------------
 
@@ -252,21 +255,27 @@ def QSR(arr,sf):
     return func(arr)
 
 # ======================================
-# todo
+# spherical
 # ======================================
 
-# def calc_spherical(x,y,z):
-#     x = np.array(x)
-#     y = np.array(y)
-#     z = np.array(z)
-#     #assert len(x) == len(y)
-#     #assert len(y) == len(z)
-#     rho = np.linalg.norm([x,y,z],axis=0)
-#     #assert len(x) == len(rho)
-#     az = np.rad2deg(np.arctan2(y,x))
-#     #assert len(x) == len(az)
-#     el = np.rad2deg(np.arcsin(z / rho))
-#     return rho,az,el
+# TODO handle when x,y,z are not lists
+def cartesian_to_spherical(x,y,z):
+    x = np.array(x)
+    y = np.array(y)
+    z = np.array(z)
+    assert len(x) == len(y) == len(z)
+    rho = np.linalg.norm([x,y,z],axis=0)
+    az = np.rad2deg(np.arctan2(y,x))
+    el = np.rad2deg(np.arcsin(z / rho))
+    return rho,az,el
+
+# TODO spherical_to_caresian, additional comparison functions
+
+
+
+# ======================================
+# string i/o
+# ======================================
 
 def str_read(filename):
     with open(filename,'r') as READ:

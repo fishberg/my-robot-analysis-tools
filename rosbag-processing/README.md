@@ -201,3 +201,6 @@ p1_p2_1_1.csv -> input_p1_p2_1_1.csv
 # output has all columns in p1_p2_1_1.csv, plus for each pair of antenna x=1..X and y=1..Y:
 x_y_t x_y_err
 ```
+
+## TODO
+* Explainations for columns in `input.csv`

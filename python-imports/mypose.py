@@ -58,6 +58,7 @@ class Pose:
 
 ########################################
 
+# pts: 3xN
 def to_homogeneous_pts(pts):
     assert len(pts.shape) == 2
     assert pts.shape[0] == 3
@@ -65,12 +66,15 @@ def to_homogeneous_pts(pts):
     hpts[0:3,:] = pts[:,:]
     return hpts
 
+# hpts: 4xN
 def un_homogeneous_pts(hpts):
     assert len(hpts.shape) == 2
     assert hpts.shape[0] == 4
     pts = hpts[0:3,:]
     return pts
 
+# T: 4x4
+# pts: 3xN
 def transform_pts(T,pts):
     hpts = to_homogeneous_pts(pts)
     res = un_homogeneous_pts(T @ hpts)
@@ -105,19 +109,7 @@ def get_pairwise(base,other,T):
     assert len(other.shape) == 2
     assert other.shape[1] == 3
 
-    # normally we should be transforming other
-    # but this dataset has base as drone but coordinate
-    # frame in terms of other because how data was collected
-    base_h = to_homogeneous_pts(base.T)
-    base_T = un_homogeneous_pts(T @ base_h).T
-
-    T_rot = mk_pose(0,0,0,0,0,90)
     other_h = to_homogeneous_pts(other.T)
-    other_T = un_homogeneous_pts(T_rot @ other_h).T
+    other_T = un_homogeneous_pts(T @ other_h).T
 
-    return all_pairs_euclid_numpy(base_T, other_T)
-
-    #other_h = to_homogeneous_pts(other.T)
-    #other_T = un_homogeneous_pts(T @ other_h).T
-
-    #return all_pairs_euclid_numpy(base, other_T)
+    return all_pairs_euclid_numpy(base, other_T)
