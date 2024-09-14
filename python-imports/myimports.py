@@ -1,6 +1,6 @@
 # Quick Start:
 # import os, sys
-# PATH_TO_LIB = os.path.expanduser('~/dirs/my-robot-analysis-tools/python-imports')
+# PATH_TO_LIB = os.path.expanduser('~/dirs/my-robot-toolbox/python-imports')
 # if PATH_TO_LIB not in sys.path:
 #     sys.path.insert(1, PATH_TO_LIB)
 # from myimports import *
